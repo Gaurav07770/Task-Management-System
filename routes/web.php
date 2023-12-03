@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Users;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +17,14 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/login', function () {
+    return view('login');
+});
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+});
+
+Route::get('auth/google', [Users::class,'redirect'])->name('google-auth');
+Route::get('auth/google/call-back', [Users::class,'callbackGoogle']);
